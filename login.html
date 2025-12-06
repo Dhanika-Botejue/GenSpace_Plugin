@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Login</title>
+    <style>
+      body {
+        font-family: system-ui;
+        padding: 16px;
+        width: 360px;
+      }
+      label {
+        display: block;
+        margin-top: 8px;
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-top: 4px;
+      }
+      button {
+        margin-top: 12px;
+        padding: 8px 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Login</h2>
+    <form id="loginForm">
+      <label>Email address<input id="email" type="email" required /></label>
+      <label>Password<input id="password" type="password" required /></label>
+      <div style="margin-top: 10px">
+        <button type="submit">Login</button>
+        <button id="to-register" type="button">Register</button>
+      </div>
+    </form>
+
+    <script src="login.js"></script>
+  </body>
+</html>

@@ -1,7 +1,90 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      body {
+        font-family: system-ui, -apple-system, Arial;
+        padding: 12px;
+        width: 320px;
+      }
+      .row {
+        margin-bottom: 10px;
+      }
+      button {
+        padding: 8px 12px;
+      }
+      a {
+        cursor: pointer;
+        color: #0066cc;
+        text-decoration: underline;
+      }
+    </style>
+  </head>
   <body>
-    <button id="save">Save Page HTML</button>
+    <div id="main-view">
+      <div id="not-logged-in" style="display: none">
+        <div class="row">You must be logged in to save pages.</div>
+        <div class="row">
+          <a id="show-login">Login</a> or <a id="show-register">Register</a>
+        </div>
+      </div>
+
+      <div id="logged-in" style="display: none">
+        <div class="row">
+          Signed in as <strong id="user-name"></strong> (<span
+            id="user-email"
+          ></span
+          >)
+        </div>
+        <div class="row">
+          <button id="save">Save Page HTML</button>
+          <button id="logout">Logout</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inline Login form -->
+    <div id="login-view" style="display: none">
+      <h3>Login</h3>
+      <form id="loginForm">
+        <label
+          >Email address<input id="login-email" type="email" required
+        /></label>
+        <label
+          >Password<input id="login-password" type="password" required
+        /></label>
+        <div style="margin-top: 10px">
+          <button type="submit">Login</button>
+          <button id="login-back" type="button">Back</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Inline Register form -->
+    <div id="register-view" style="display: none">
+      <h3>Register</h3>
+      <form id="registerForm">
+        <label
+          >Full name<input id="register-name" type="text" required
+        /></label>
+        <label
+          >Email address<input id="register-email" type="email" required
+        /></label>
+        <label
+          >Password<input
+            id="register-password"
+            type="password"
+            required
+            minlength="6"
+        /></label>
+        <div style="margin-top: 10px">
+          <button type="submit">Register</button>
+          <button id="register-back" type="button">Back</button>
+        </div>
+      </form>
+    </div>
+
     <script src="popup.js"></script>
   </body>
 </html>
