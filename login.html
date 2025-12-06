@@ -1,39 +1,164 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Login</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sign in — GenSpace</title>
     <style>
+      :root {
+        --card: #fff;
+        --muted: #6b7280;
+        --accent: #2563eb;
+      }
+      html,
       body {
-        font-family: system-ui;
-        padding: 16px;
-        width: 360px;
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(180deg, #f8fafc, #f1f5f9);
+        font-family: Inter, system-ui, Segoe UI, Roboto, Arial;
+        color: #0f172a;
+        padding: 20px;
+      }
+      .card {
+        width: 100%;
+        max-width: 420px;
+        background: var(--card);
+        border-radius: 12px;
+        padding: 20px 22px;
+        box-shadow: 0 6px 20px rgba(2, 6, 23, 0.08);
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+      .logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, var(--accent), #7c3aed);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+      }
+      h1 {
+        font-size: 18px;
+        margin: 0;
+      }
+      p.subtitle {
+        margin: 6px 0 18px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .field {
+        margin-bottom: 12px;
       }
       label {
         display: block;
-        margin-top: 8px;
+        font-size: 13px;
+        color: #111827;
+        margin-bottom: 6px;
       }
       input {
         width: 100%;
-        padding: 8px;
-        margin-top: 4px;
+        padding: 10px 12px;
+        border-radius: 8px;
+        border: 1px solid #e6e9ef;
+        background: #fff;
+        font-size: 14px;
       }
-      button {
+      input:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+        border-color: var(--accent);
+      }
+      .actions {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-top: 14px;
+      }
+      .btn {
+        padding: 10px 14px;
+        border-radius: 8px;
+        border: 0;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: #fff;
+      }
+      .btn-ghost {
+        background: transparent;
+        border: 1px solid #e6e9ef;
+        color: #111827;
+      }
+      .note {
         margin-top: 12px;
-        padding: 8px 12px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      @media (max-width: 420px) {
+        .card {
+          padding: 16px;
+        }
       }
     </style>
   </head>
   <body>
-    <h2>Login</h2>
-    <form id="loginForm">
-      <label>Email address<input id="email" type="email" required /></label>
-      <label>Password<input id="password" type="password" required /></label>
-      <div style="margin-top: 10px">
-        <button type="submit">Login</button>
-        <button id="to-register" type="button">Register</button>
+    <div class="card" role="dialog" aria-labelledby="login-title">
+      <div class="brand">
+        <div class="logo">GS</div>
+        <div>
+          <h1 id="login-title">Sign in to GenSpace</h1>
+          <p class="subtitle">Access your saved pages and share with others.</p>
+        </div>
       </div>
-    </form>
+
+      <form id="loginForm" autocomplete="on">
+        <div class="field">
+          <label for="email">Email address</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            placeholder="you@company.com"
+          />
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            required
+            placeholder="Your password"
+          />
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">Sign in</button>
+          <button id="to-register" class="btn btn-ghost" type="button">
+            Create account
+          </button>
+        </div>
+      </form>
+
+      <p class="note">
+        This is a demo auth. For production, use a secure server-side auth flow.
+      </p>
+    </div>
 
     <script src="login.js"></script>
   </body>

@@ -42,7 +42,7 @@ chrome.runtime.onMessage.addListener(async (msg, sender, sendResponse) => {
             url: tab.url,
             content: html,
             // include user info to associate the share (server must accept)
-            user: { name: currentUser.name, email: currentUser.email },
+            //user: { name: currentUser.name, email: currentUser.email },
             // include user_id returned at login/registration
             user_id: currentUser.user_id || null,
           }),

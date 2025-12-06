@@ -1,42 +1,201 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Register</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Register — GenSpace</title>
     <style>
+      :root {
+        --bg: #f5f7fb;
+        --card: #ffffff;
+        --muted: #6b7280;
+        --accent: #2563eb;
+        --danger: #ef4444;
+      }
+      html,
       body {
-        font-family: system-ui;
-        padding: 16px;
-        width: 360px;
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+          Roboto, "Helvetica Neue", Arial;
+        background: linear-gradient(180deg, #f8fafc, #f1f5f9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        color: #0f172a;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 420px;
+        background: var(--card);
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(2, 6, 23, 0.08);
+        padding: 20px 22px;
+        box-sizing: border-box;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 6px;
+      }
+      .logo {
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        background: linear-gradient(135deg, var(--accent), #7c3aed);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 700;
+        font-size: 18px;
+      }
+      h1 {
+        font-size: 18px;
+        margin: 0;
+      }
+      p.subtitle {
+        margin: 6px 0 18px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      form {
+        display: block;
+      }
+      .field {
+        margin-bottom: 12px;
       }
       label {
         display: block;
+        font-size: 13px;
+        color: #111827;
+        margin-bottom: 6px;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 8px;
+        border: 1px solid #e6e9ef;
+        background: #fff;
+        box-sizing: border-box;
+        font-size: 14px;
+      }
+      input:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+        border-color: var(--accent);
+      }
+
+      .actions {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-top: 14px;
+      }
+      .btn {
+        padding: 10px 14px;
+        border-radius: 8px;
+        border: 0;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: #fff;
+      }
+      .btn-ghost {
+        background: transparent;
+        border: 1px solid #e6e9ef;
+        color: #111827;
+      }
+
+      .note {
+        margin-top: 12px;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .error {
+        color: var(--danger);
+        font-size: 13px;
         margin-top: 8px;
       }
-      input {
-        width: 100%;
-        padding: 8px;
-        margin-top: 4px;
-      }
-      button {
-        margin-top: 12px;
-        padding: 8px 12px;
+
+      @media (max-width: 420px) {
+        .card {
+          padding: 16px;
+        }
       }
     </style>
   </head>
   <body>
-    <h2>Register</h2>
-    <form id="registerForm">
-      <label>Full name<input id="name" type="text" required /></label>
-      <label>Email address<input id="email" type="email" required /></label>
-      <label
-        >Password<input id="password" type="password" required minlength="6"
-      /></label>
-      <div style="margin-top: 10px">
-        <button type="submit">Register</button>
-        <button id="to-login" type="button">Go to Login</button>
+    <div class="card" role="dialog" aria-labelledby="register-title">
+      <div class="brand">
+        <div class="logo">GS</div>
+        <div>
+          <h1 id="register-title">Create your GenSpace account</h1>
+          <p class="subtitle">
+            Save and share interesting pages. Quick, private demo auth.
+          </p>
+        </div>
       </div>
-    </form>
+
+      <form id="registerForm" autocomplete="on">
+        <div class="field">
+          <label for="name">Full name</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            required
+            placeholder="Jane Doe"
+          />
+        </div>
+
+        <div class="field">
+          <label for="email">Email address</label>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            required
+            placeholder="you@company.com"
+          />
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            required
+            minlength="6"
+            placeholder="Choose a secure password"
+          />
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">Create account</button>
+          <button id="to-login" class="btn btn-ghost" type="button">
+            Sign in
+          </button>
+        </div>
+      </form>
+
+      <p class="note">
+        By creating an account you agree to the demo terms. Passwords are stored
+        locally in this demo.
+      </p>
+    </div>
 
     <script src="register.js"></script>
   </body>
