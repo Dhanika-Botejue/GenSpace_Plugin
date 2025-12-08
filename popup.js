@@ -66,9 +66,9 @@ document.addEventListener("DOMContentLoaded", () => {
   $("show-login").addEventListener("click", () => showView("login-view"));
   $("show-register").addEventListener("click", () => showView("register-view"));
 
-  // back buttons
-  $("login-back").addEventListener("click", () => renderMain());
-  $("register-back").addEventListener("click", () => renderMain());
+  // navigation between auth views
+  $("login-to-register").addEventListener("click", () => showView("register-view"));
+  $("register-to-login").addEventListener("click", () => showView("login-view"));
 
   // logout
   $("logout").addEventListener("click", async () => {
