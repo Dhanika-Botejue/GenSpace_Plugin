@@ -108,13 +108,6 @@
         font-size: 12px;
         color: var(--muted);
       }
-      #main-view {
-        padding: 16px;
-      }
-      button#save, button#logout {
-        padding: 8px 12px;
-        cursor: pointer;
-      }
       a {
         cursor: pointer;
         color: #0066cc;
@@ -123,24 +116,45 @@
     </style>
   </head>
   <body>
-    <div id="main-view">
+    <div id="main-view" class="container">
       <div id="not-logged-in" style="display: none">
-        <div class="row">You must be logged in to save pages.</div>
-        <div class="row">
-          <a id="show-login">Login</a> or <a id="show-register">Register</a>
+        <div class="card">
+          <div class="brand">
+            <div>
+              <h1>Welcome to GenSpace</h1>
+              <p class="subtitle">Save and share interesting pages.</p>
+            </div>
+          </div>
+          
+          <p style="font-size: 14px; margin-bottom: 20px; color: var(--muted);">
+            You must be logged in to save pages.
+          </p>
+
+          <div class="actions" style="flex-direction: column; align-items: stretch;">
+            <button id="show-login" class="btn btn-primary">Sign in</button>
+            <button id="show-register" class="btn btn-ghost">Create account</button>
+          </div>
         </div>
       </div>
 
       <div id="logged-in" style="display: none">
-        <div class="row">
-          Signed in as <strong id="user-name"></strong> (<span
-            id="user-email"
-          ></span
-          >)
-        </div>
-        <div class="row">
-          <button id="save">Save Page HTML</button>
-          <button id="logout">Logout</button>
+        <div class="card">
+          <div class="brand">
+            <div>
+              <h1>GenSpace</h1>
+              <p class="subtitle">Ready to save.</p>
+            </div>
+          </div>
+
+          <div style="background: #f8fafc; padding: 12px; border-radius: 8px; margin-bottom: 16px; border: 1px solid #e6e9ef;">
+            <div style="font-size: 14px; font-weight: 600; color: #0f172a;" id="user-name"></div>
+            <div style="font-size: 13px; color: var(--muted);" id="user-email"></div>
+          </div>
+
+          <div class="actions" style="flex-direction: column; align-items: stretch;">
+            <button id="save" class="btn btn-primary">Save Page HTML</button>
+            <button id="logout" class="btn btn-ghost" style="color: var(--danger); border-color: #fee2e2; background: #fef2f2;">Logout</button>
+          </div>
         </div>
       </div>
     </div>
@@ -149,7 +163,6 @@
     <div id="login-view" style="display: none" class="container">
       <div class="card" role="dialog" aria-labelledby="login-title">
         <div class="brand">
-          <div class="logo">GS</div>
           <div>
             <h1 id="login-title">Sign in to GenSpace</h1>
             <p class="subtitle">Access your saved pages and share with others.</p>
@@ -186,10 +199,6 @@
             </button>
           </div>
         </form>
-
-        <p class="note">
-          This is a demo auth. For production, use a secure server-side auth flow.
-        </p>
       </div>
     </div>
 
@@ -197,11 +206,10 @@
     <div id="register-view" style="display: none" class="container">
       <div class="card" role="dialog" aria-labelledby="register-title">
         <div class="brand">
-          <div class="logo">GS</div>
           <div>
             <h1 id="register-title">Create your GenSpace account</h1>
             <p class="subtitle">
-              Save and share interesting pages. Quick, private demo auth.
+              Save and share interesting pages.
             </p>
           </div>
         </div>
@@ -248,11 +256,6 @@
             </button>
           </div>
         </form>
-
-        <p class="note">
-          By creating an account you agree to the demo terms. Passwords are stored
-          locally in this demo.
-        </p>
       </div>
     </div>
 
