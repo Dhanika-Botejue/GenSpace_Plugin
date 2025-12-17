@@ -60,24 +60,46 @@ function extractUserId(data) {
   );
 }
 
+function debounceButton(btn, timeout = 1000) {
+  if (!btn) return;
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.disabled = false;
+  }, timeout);
+}
+
 // Wire UI buttons
 document.addEventListener("DOMContentLoaded", () => {
   // navigation from main
-  $("show-login").addEventListener("click", () => showView("login-view"));
-  $("show-register").addEventListener("click", () => showView("register-view"));
+  $("show-login").addEventListener("click", (e) => {
+    debounceButton(e.target);
+    showView("login-view");
+  });
+  $("show-register").addEventListener("click", (e) => {
+    debounceButton(e.target);
+    showView("register-view");
+  });
 
   // navigation between auth views
-  $("login-to-register").addEventListener("click", () => showView("register-view"));
-  $("register-to-login").addEventListener("click", () => showView("login-view"));
+  $("login-to-register").addEventListener("click", (e) => {
+    debounceButton(e.target);
+    showView("register-view");
+  });
+  $("register-to-login").addEventListener("click", (e) => {
+    debounceButton(e.target);
+    showView("login-view");
+  });
 
   // logout
-  $("logout").addEventListener("click", async () => {
+  $("logout").addEventListener("click", async (e) => {
+    debounceButton(e.target);
     await chrome.storage.local.remove("currentUser");
     renderMain();
   });
 
   // save
-  $("save").addEventListener("click", async () => {
+  $("save").addEventListener("click", async (e) => {
+    debounceButton(e.target);
     const data = await chrome.storage.local.get(["currentUser"]);
     if (!data.currentUser) {
       alert("Please log in before saving pages.");
@@ -89,6 +111,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Register form
   $("registerForm").addEventListener("submit", async (e) => {
     e.preventDefault();
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    debounceButton(submitBtn);
+
     const username = $("register-name").value.trim();
     const email = $("register-email").value.trim().toLowerCase();
     const password = $("register-password").value;
@@ -132,6 +157,9 @@ document.addEventListener("DOMContentLoaded", () => {
   // Login form
   $("loginForm").addEventListener("submit", async (e) => {
     e.preventDefault();
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    debounceButton(submitBtn);
+
     const email = $("login-email").value.trim().toLowerCase();
     const password = $("login-password").value;
 
